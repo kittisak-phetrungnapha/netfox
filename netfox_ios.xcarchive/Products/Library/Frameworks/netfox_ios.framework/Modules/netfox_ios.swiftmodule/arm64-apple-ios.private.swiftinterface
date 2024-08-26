@@ -1,0 +1,136 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name netfox_ios
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import Foundation
+import MessageUI
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_inheritsConvenienceInitializers @objc open class NFX : ObjectiveC.NSObject {
+  @objc open class func sharedInstance() -> netfox_ios.NFX
+  @objc public enum ENFXGesture : Swift.Int {
+    case shake
+    case custom
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc open func start()
+  @objc open func stop()
+  @objc open func isStarted() -> Swift.Bool
+  @objc open func setCachePolicy(_ policy: Foundation.URLCache.StoragePolicy)
+  @objc open func setGesture(_ gesture: netfox_ios.NFX.ENFXGesture)
+  @objc open func show()
+  @objc open func show(on rootViewController: UIKit.UIViewController)
+  @objc open func hide()
+  @objc open func toggle()
+  @objc open func ignoreURL(_ url: Swift.String)
+  @objc open func getSessionLog() -> Foundation.Data?
+  @objc open func ignoreURLs(_ urls: [Swift.String])
+  @objc open func ignoreURLsWithRegex(_ regex: Swift.String)
+  @objc open func ignoreURLsWithRegexes(_ regexes: [Swift.String])
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension netfox_ios.NFX : UIKit.UIAdaptivePresentationControllerDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func presentationControllerDidDismiss(_ presentationController: UIKit.UIPresentationController)
+}
+@_inheritsConvenienceInitializers @objc public class NFXHTTPModel : ObjectiveC.NSObject {
+  @objc public var requestURL: Swift.String?
+  @objc public var requestURLComponents: Foundation.URLComponents?
+  @objc public var requestURLQueryItems: [Foundation.URLQueryItem]?
+  @objc public var requestMethod: Swift.String?
+  @objc public var requestCachePolicy: Swift.String?
+  @objc public var requestDate: Foundation.Date?
+  @objc public var requestTime: Swift.String?
+  @objc public var requestTimeout: Swift.String?
+  @objc public var requestHeaders: [Swift.AnyHashable : Any]?
+  public var requestBodyLength: Swift.Int?
+  @objc public var requestType: Swift.String?
+  @objc public var requestCurl: Swift.String?
+  public var responseStatus: Swift.Int?
+  @objc public var responseType: Swift.String?
+  @objc public var responseDate: Foundation.Date?
+  @objc public var responseTime: Swift.String?
+  @objc public var responseHeaders: [Swift.AnyHashable : Any]?
+  public var responseBodyLength: Swift.Int?
+  public var timeInterval: Swift.Float?
+  @objc public var randomHash: Swift.String {
+    @objc get
+    @objc set
+  }
+  public var shortType: netfox_ios.HTTPModelShortType
+  @objc public var shortTypeString: Swift.String {
+    @objc get
+  }
+  @objc public var noResponse: Swift.Bool
+  @objc public func getRequestBody() -> Swift.String
+  @objc public func getResponseBody() -> Swift.String
+  @objc public func getRequestBodyFileURL() -> Foundation.URL
+  @objc public func getRequestBodyFilename() -> Swift.String
+  @objc public func getResponseBodyFileURL() -> Foundation.URL
+  @objc public func getResponseBodyFilename() -> Swift.String
+  @objc public func saveData(_ dataString: Swift.String, to fileURL: Foundation.URL)
+  @objc public func readRawData(from fileURL: Foundation.URL) -> Foundation.Data?
+  @objc public func getTimeFromDate(_ date: Foundation.Date) -> Swift.String?
+  public func prettyPrint(_ rawData: Foundation.Data, type: netfox_ios.HTTPModelShortType) -> Swift.String?
+  @objc public func isSuccessful() -> Swift.Bool
+  @objc public func formattedRequestLogEntry() -> Swift.String
+  @objc public func formattedResponseLogEntry() -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum HTTPModelShortType : Swift.String, Swift.CaseIterable {
+  case JSON
+  case XML
+  case HTML
+  case IMAGE
+  case OTHER
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [netfox_ios.HTTPModelShortType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [netfox_ios.HTTPModelShortType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension netfox_ios.HTTPModelShortType {
+  public init(contentType: Swift.String)
+}
+extension UIKit.UIWindow {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func motionEnded(_ motion: UIKit.UIEvent.EventSubtype, with event: UIKit.UIEvent?)
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor @preconcurrency public class func getNFXDeviceType() -> Swift.String
+  @_Concurrency.MainActor @preconcurrency public class func parseDeviceType(_ identifier: Swift.String) -> Swift.String
+}
+@_inheritsConvenienceInitializers @objc open class NFXProtocol : Foundation.URLProtocol {
+  @objc override dynamic open class func canInit(with request: Foundation.URLRequest) -> Swift.Bool
+  @objc override dynamic open class func canInit(with task: Foundation.URLSessionTask) -> Swift.Bool
+  @objc override dynamic open func startLoading()
+  @objc override dynamic open func stopLoading()
+  @objc override dynamic open class func canonicalRequest(for request: Foundation.URLRequest) -> Foundation.URLRequest
+  @objc override dynamic public init(request: Foundation.URLRequest, cachedResponse: Foundation.CachedURLResponse?, client: (any Foundation.URLProtocolClient)?)
+  @objc deinit
+}
+extension netfox_ios.NFXProtocol : Foundation.URLSessionDataDelegate {
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive response: Foundation.URLResponse, completionHandler: @escaping (Foundation.URLSession.ResponseDisposition) -> Swift.Void)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: (any Swift.Error)?)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest, completionHandler: @escaping (Foundation.URLRequest?) -> Swift.Void)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  @objc dynamic public func urlSessionDidFinishEvents(forBackgroundURLSession session: Foundation.URLSession)
+}
+extension netfox_ios.NFX.ENFXGesture : Swift.Equatable {}
+extension netfox_ios.NFX.ENFXGesture : Swift.Hashable {}
+extension netfox_ios.NFX.ENFXGesture : Swift.RawRepresentable {}
+extension netfox_ios.HTTPModelShortType : Swift.Equatable {}
+extension netfox_ios.HTTPModelShortType : Swift.Hashable {}
+extension netfox_ios.HTTPModelShortType : Swift.RawRepresentable {}
